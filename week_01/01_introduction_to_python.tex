@@ -9,6 +9,9 @@
 \setlength{\parskip}{8pt}
 \setlength{\parindent}{0pt}
 
+\usepackage{graphicx}
+\graphicspath{{../images/}}
+
 \title{Introduction to Python}
 
 \author{}
@@ -133,5 +136,84 @@ A recipe has:
 \end{enumerate}
 
 The previous three pieces constitute what is known as an algorithm.
+
+\section{Machines}
+
+One might be wondering how to capture a recipe or algorithm in a mechanical
+process. Historically, there have been two options. The former is to use what
+is called as a \textit{fixed program computer}, i.e., a computer specifically
+designed to calculate a particular computation. For example, handheld
+calculators have been fixed to do addition, subtraction, multiplication this
+is simple set of arithmetic operations, and that's all they can do.
+
+The alternative to a fixed program computer is a \textit{stored program
+computer}. One can load into this computer an algorithm, and inside of it, a
+set of parts are going to execute those instructions whenever one wants.
+Inside a stored program computer there is a special program known as the
+interpreter which is going to walk through each of those sequence of
+instructions doing the required computation. The advantage is that now one can
+load any algorithm without the need of having to build another computer to run
+the new program.
+
+\subsection{Basic Machine Architecture}
+
+Basically, a machine has memory which a place where to store information.
+This information could be data but it also can be a sequence of instructions
+that constitute an algorithm. A machine will also have a way to load things
+into it and to print data out of it, i.e., input and output.
+
+Inside the heart of the machine there are two elements. The former is called
+A.L.U. (Arithmetic Logic Unit) which takes information from memory, reads it
+in to do perform a primitive operation (as addition or multiplication), and
+then it will store stuff back up into memory. The latter is called control
+unit which keeps track of the specific operation that has to be
+computed in the A.L.U. at each point in time.
+
+Inside the control unit there is an important element called program counter.
+When loading a program into a machine, the program counter points to the
+location of the first instruction. When one asks the machine to execute the
+program, the program counter reads that first instruction, so it will cause an
+operation to take place, and it will also add one to the program counter which
+is going to take it to the next instruction in the sequence and repeat the
+process. At some point, a test might be reached, and the value of this test is
+going to change the program counter. Eventually, something is going to indicate
+to stop the program.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.5\textwidth]{machine_architecture.png}
+  \caption{Basic Machine Architecture}
+\end{figure}
+
+\subsection{Stored Program}
+
+A stored program is a sequence of instructions which is built out of simple
+arithmetic instructions, logic instructions and simple tests, and it also
+allows moving data around. This program has associated with it a special
+program called the interpreter which is going to execute each of those
+sequences of instructions in order according to the flow of control, and it
+will also terminate the program when indicated.
+
+\subsection{Basic Primitives}
+
+Most machines come with simple arithmetic and logic operations, but it is
+possible to go simpler than this. Alan Turing showed that one can compute
+anything just with six primitives this principle is known as Turing
+completeness. In fact, there is something called a Turing machine that is an
+infinite tape with a set of squares on it. In each square, there is a symbol
+that could be either 0 or 1.
+
+What Turing showed is that if you have six operations and those are: move left,
+move right, print, scan, erase, and do nothing, one can compute anything
+that is computable. Fortunately, programming languages come with a more
+convinient set of primitives, but the fundamental idea is that
+\textit{with a simple set of primitives, one is able to compute anything}.
+
+The power of computational thinking relies on being able to write descriptions,
+i.e., to abstract methods in order to create new primitives. There is a
+fundamental property that says that anything that is computable in one
+programming language is computable in another programming language. What is
+different is that some taks could be easily done in some programming languages
+than in others. This is also a proof of Turing completeness.
 
 \end{document}
