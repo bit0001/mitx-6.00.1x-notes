@@ -73,4 +73,65 @@ cracking encryption schemes, or some ploblems are fundamentally impossible to
 compute as the famous Halting problem which basically asks to predict whether
 a piece of code will always halt with an answer for any input.
 
+\section{Types of Knowledge}
+
+It is possible to divide knowledge into two types:
+
+\begin{enumerate}
+  \item \textit{Declarative knowledge:} it is statements of fact, i.e., statements of
+        truth.
+  \item \textit{Imperative knowledge:} it is a recipe, i.e., how-to knowlege or how-to
+        information. It gives a sequence of steps to find a solution.
+\end{enumerate}
+
+Both kind of knowledge are important, but only the second one allows getting
+the computer to do something.
+
+\subsection{A numerical example}
+\textit{Declarative knowledge:} the square root of a number $x$ is $y$ such
+that $y * y = x$. The previous sentence is a statement of fact. Though it is
+not telling how to find a square root, it is telling how to check if a number
+is the square root of another one.
+
+\textit{Imperative knowledge:} Heron of Alexandria's algorithm to find the
+square root of a number $x$ (e.g. 16):
+
+\begin{enumerate}
+  \item Start with a guess, $g$.
+  \item If $g * g$ is close enought to $x$, then stop and say $g$ is the
+        answer.
+  \item Otherwise, make a new guess by averaging $g$ and $x/g$.
+  \item Using the new guess, repeat process until close enough.
+\end{enumerate}
+
+
+\begin{table}[h!]
+\begin{center}
+  \begin{tabular}{|p{2.0cm}|p{2.0cm}|p{2.0cm}|p{2.0cm}|}
+    \hline
+    $g$ & $g * g$ & $x / g$ & $(g + x / g) / 2$\\
+    \hline
+    3 & 9 & 5.333 & 4.1667\\
+    \hline
+    4.1667 & 17.36 & 3.837 & 4.0035\\
+    \hline
+    4.0035 & 16.0277 & 3.997 & 4.000002\\
+    \hline
+  \end{tabular}
+\caption{Heron's algorithm to find the square root of 16.}
+\end{center}
+\end{table}
+
+\subsection{What is a recipe?}
+
+A recipe has:
+
+\begin{enumerate}
+  \item A sequence of simple steps.
+  \item A flow of control, a process that specifies when each step is executed.
+  \item A way to decide when to stop.
+\end{enumerate}
+
+The previous three pieces constitute what is known as an algorithm.
+
 \end{document}
