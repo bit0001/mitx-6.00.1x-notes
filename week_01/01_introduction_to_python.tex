@@ -1,6 +1,8 @@
 \documentclass[a4paper]{article}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{pifont}
 \newtheorem{thm}{Theorem}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -11,6 +13,9 @@
 
 \usepackage{graphicx}
 \graphicspath{{../images/}}
+
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\cmark}{\ding{51}}%
 
 \title{Introduction to Python}
 
@@ -215,5 +220,73 @@ fundamental property that says that anything that is computable in one
 programming language is computable in another programming language. What is
 different is that some taks could be easily done in some programming languages
 than in others. This is also a proof of Turing completeness.
+
+\section{Languages}
+
+\subsection{Creating Recipes}
+
+A programming language provides a set of primitive operations, and the next
+step is to put them together. In order to to that, one uses expressions which
+are complex but legal combinations of primitives. Any legal expression in a
+programming language, any computation, has associated with it a value.
+
+\subsection{Aspects of Languages}
+
+While in natural languages such as English the primitive constructs are words,
+in a programming language the primitive constructs are \textit{numbers},
+sequences of characters a.k.a. \textit{strings}, and \textit{simple operations}
+such as addition, subtraction, and comparison.
+
+Once again, when having those primitives, one has to put them together
+considering both syntax and semantics. \textit{Syntax} tells whether or not an
+expression or combination of expresions is legal. Associated with every
+expression that is syntactically valid is the meaning a.k.a semantics.
+On one hand, \textit{static semantics} tells which syntactically valid expression
+have meaning. On the other hand, \textit{semantics} is the meaning associated
+with that syntactically correct string of symbols with no semantic errors.
+In order to clarify these three concepts \textit{syntaxis, static semantics}
+and \textit{semantics} see table \ref{table:languages}.
+
+\begin{table}[!h]
+\begin{center}
+  \begin{tabular}{|p{4.5cm}|p{1.50cm}|p{1.8cm}|p{1.75cm}|}
+    \hline
+    Sentence & Syntaxis & Static Sem. & Semantics\\
+    \hline
+    I have a dog. & \cmark & \cmark & \cmark\\
+    \hline
+    Tim saw Jay with a telescope. & \cmark & \cmark & \xmark\\
+    \hline
+    I are hungry & \cmark & \xmark & no eval\\
+    \hline
+    cat dog boy & \xmark & no eval & no eval\\
+    \hline
+  \end{tabular}
+\caption{Syntaxis vs. static semantics vs semantics}
+\label{table:languages}
+\end{center}
+\end{table}
+
+Though in English it is possible to have multiple meaning for a sentence,
+as in the sentence \textit{Tim saw Jay with a telescope}, in programming
+languages an expression has only one meaning. However, the meaning could be not
+the one that me programmer intended.
+
+\subsection{Where Things Go Wrong}
+
+Even when a programmer keeps in mind sintaxis, static semantics and semantics,
+things can go wrong. For example, he can encounter \textit{syntactic errors}
+which are common but easy to find since most programming languages provide a
+way to catch them. In addition, a programmer might encounter \textit{static
+semantic errors}, i.e., things that they are in the right order, but they
+don't make sense. Some programming languages check for them before running a
+program, but other languages, as Python, do it on the fly.
+
+The bigger problem is when there are no semantic errors, but the programmer
+gets a different meaning than what he expected. There different possible
+consequences such as the program can crash or stop running, the program can
+run forever, or even worse, the program gives an answer that is different than
+the expected.
+
 
 \end{document}
