@@ -3,6 +3,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{pifont}
+\usepackage{listings}
 \newtheorem{thm}{Theorem}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -14,8 +15,13 @@
 \usepackage{graphicx}
 \graphicspath{{../images/}}
 
+\lstset{language=Python,
+    basicstyle=\ttfamily,
+}
+
 \newcommand{\xmark}{\ding{55}}%
 \newcommand{\cmark}{\ding{51}}%
+\newcommand{\inlinecode}{\texttt}
 
 \title{Introduction to Python}
 
@@ -288,5 +294,184 @@ consequences such as the program can crash or stop running, the program can
 run forever, or even worse, the program gives an answer that is different than
 the expected.
 
+\section{Types}
+
+As it has been previously mentioned, a program is a sequence of \textit{
+definitions} and \textit{commands}. Defitions means ways of either assigning
+names to values or more importantly creating procedures that will be treated
+as if they are primitives. Commands are simpler expressions that can be
+executed directly within Python using the shell which briefly speaking is a
+window into which one can type expressions that are passed to the Python
+interpreter and prints out the result.
+
+\subsection{Objects}
+One of the fundamental primitives in Python are \textit{objects}. Objects
+represent data, and programs manipulate objects in order to get out data of
+them or do something with them. Every object has a type associated with it,
+and this type tells programs whether or not they can act on it.
+
+Objects could be either \textit{scalar} objects or \textit{non-scalar} objects.
+Scalar objects cannot be subdivided, and non-scalar objects have internal
+structure into which a programmer can pull out parts.
+
+\subsection{Scalar Objects in Python}
+
+There are very few scalar objects in Python:
+
+\begin{itemize}
+  \item \inlinecode{int} - represent integers as 9
+  \item \inlinecode{float} - represent real numbers as 3.1415
+  \item \inlinecode{bool} - represent boolean values as \inlinecode{True} or
+        \inlinecode{False}
+  \item \inlinecode{NoneType} - special one that has just one value
+        \inlinecode{None}
+\end{itemize}
+
+It is possible to use \inlinecode{type()} to see the type of an object.
+
+\begin{lstlisting}
+In [1]: type(9)
+Out[1]: int
+
+In [2]: type(3.1415)
+Out[2]: float
+
+In [3]: type(True)
+Out[3]: bool
+
+In [4]: type(False)
+Out[4]: bool
+
+In [5]: type(None)
+Out[5]: NoneType
+\end{lstlisting}
+
+\subsection{Type Conversion}
+
+It is possible to convert an object of one type to another. This is called
+casting.
+
+\begin{lstlisting}
+In [1]: float(9)
+Out[1]: 9.0
+
+In [2]: type(float(9))
+Out[2]: float
+
+In [3]: int(3.1415)
+Out[3]: 3
+
+In [4]: type(int(3.1415))
+Out[4]: int
+\end{lstlisting}
+
+Notice that in Python when casting from \inlinecode{float} to \inlinecode{int}
+the decimal part is truncated.
+
+\subsubsection{Printing to the console}
+
+It is possible to use the console or shell to evaluate expressions, but
+sometimes the programmer might want to print an expression, so he can use
+\inlinecode{print()}.
+
+\begin{lstlisting}
+In [1]: 3 + 2
+Out[1]: 5
+
+In [2]: print(3 + 2)
+5
+\end{lstlisting}
+
+Notice that when printing something there is no output since no value is
+returned. \inlinecode{print} returns \inlinecode{None}.
+
+\subsubsection{Expressions}
+
+In order to form expressions, which have a value which has a type, objects and
+operator must be combined. The following is the syntax for a simple expression.
+
+\begin{lstlisting}
+<object> <operator> <object>
+\end{lstlisting}
+
+\subsubsection{Operators on \inlinecode{int}s and \inlinecode{float}s}
+
+Considering that \inlinecode{i} and \inlinecode{j} are either an
+\inlinecode{int} or a \inlinecode{flaot}, these are the available operators:
+
+\begin{itemize}
+  \item \inlinecode{i + j} $\longrightarrow$ the sum of \inlinecode{i} and
+        \inlinecode{j}
+  \item \inlinecode{i - j} $\longrightarrow$ the difference of \inlinecode{i}
+        and \inlinecode{j}
+  \item \inlinecode{i * j} $\longrightarrow$ the product of \inlinecode{i} and
+        \inlinecode{j}
+  \item \inlinecode{i / j} $\longrightarrow$ the division of \inlinecode{i} and
+        \inlinecode{j}
+  \item \inlinecode{i // j} $\longrightarrow$ the integer division of
+        \inlinecode{i} and \inlinecode{j}
+  \item \inlinecode{i \% j} $\longrightarrow$ the remainder when\inlinecode{i}
+        is divided by \inlinecode{j}
+  \item \inlinecode{i ** j} $\longrightarrow$ the \inlinecode{j}-th power of
+        \inlinecode{i}
+\end{itemize}
+
+\begin{lstlisting}
+In [1]: 3 - 2
+Out[1]: 1
+
+In [2]: 3 - 2.0
+Out[2]: 1.0
+
+In [3]: 3 / 2
+Out[3]: 1.5
+
+In [4]: 3 // 2
+Out[4]: 1
+
+In [5]: 5 % 3
+Out[5]: 2
+\end{lstlisting}
+
+When both \inlinecode{i} and \inlinecode{j} have the same type, the result of
+the sum, difference, multiplication or power is of this type, but when mixing
+an \inlinecode{int} and a \inlinecode{float} the result is a
+\inlinecode{float}. The result of a division is always a \inlinecode{float},
+while the result of the integer division is an \inlinecode{int} which is the
+quotient of that division.
+
+\subsubsection{Simple Operations}
+
+Parentheses are used to tell Python do this operation first. In addition,
+there is an operator precedence which are perform in the following order.
+
+\begin{itemize}
+  \item \inlinecode{**}
+  \item \inlinecode{*},  \inlinecode{/}, and \inlinecode{//}
+  \item \inlinecode{+} and \inlinecode{-}
+\end{itemize}
+
+Operators at the same level have the same precedece, so when having multiple
+operators of the same level they are evaluated from left to right.
+
+\begin{lstlisting}
+In [1]: 3 + 2 * 2
+Out[1]: 7
+
+In [2]: 3 * 10 / 2
+Out[2]: 15.0
+
+In [3]: 2 + 1 - 10
+Out[3]: -7
+
+In [4]: 9 // 2 * 4
+Out[4]: 16
+
+In [5]: 4 + 7 % 3
+Out[5]: 5
+
+In [6]: 5 * (1 + 3)
+Out[6]: 20
+\end{lstlisting}
 
 \end{document}
