@@ -17,6 +17,7 @@
 
 \lstset{language=Python,
     basicstyle=\ttfamily,
+    showstringspaces=false,
 }
 
 \newcommand{\xmark}{\ding{55}}%
@@ -542,5 +543,119 @@ radius += 1
 In the previos suite of code, a suite of code the Pythonic way to call a block
 of code, the value for \inlinecode{area} does not change until one tells the
 computer to do the calculation again.
+
+\section{Operators and Branching}
+
+\subsection{Comparison Operators on \inlinecode{int} and \inlinecode{float}}
+
+If \inlinecode{i} and \inlinecode{j} are either a \inlinecode{float} or an
+\inlinecode{int}, the following comparison operators can be applied,
+
+\begin{itemize}
+  \item \inlinecode{i > j} it is evaluated to \inlinecode{True} if
+        \inlinecode{i} is greater than \inlinecode{j}.
+  \item \inlinecode{i >= j} it is evaluated to \inlinecode{True} if
+        \inlinecode{i} is greater than or equal to \inlinecode{j}.
+  \item \inlinecode{i < j} it is evaluated to \inlinecode{True} if
+        \inlinecode{i} is less than \inlinecode{j}.
+  \item \inlinecode{i <= j} it is evaluated to \inlinecode{True} if
+        \inlinecode{i} is less than or equal to \inlinecode{j}.
+  \item \inlinecode{i == j} it is evaluated to \inlinecode{True} if
+        \inlinecode{i} is equal to \inlinecode{j}.
+  \item \inlinecode{i != j} it is evaluated to \inlinecode{True} if
+        \inlinecode{i} is not equal to \inlinecode{j}.
+\end{itemize}
+
+\subsection{Logic Operators on \inlinecode{bool}s}
+
+If \inlinecode{a} and \inlinecode{b} are any variable names:
+
+\begin{itemize}
+  \item \inlinecode{not a} $\longrightarrow$ \inlinecode{True} if
+        \inlinecode{a} is \inlinecode{False} or \inlinecode{False} if
+        \inlinecode{a} is \inlinecode{True}.
+  \item \inlinecode{a and b} $\longrightarrow$ \inlinecode{True} if both are
+        \inlinecode{True}.
+  \item \inlinecode{a or b} $\longrightarrow$ \inlinecode{True} if either or
+        both are \inlinecode{True}.
+\end{itemize}
+
+\subsection{Branching Programs}
+
+The simplest branching statement is a \textit{conditional}:
+
+\begin{itemize}
+  \item A test which is an expression that evalues to either \inlinecode{True}
+  or \inlinecode{False}
+  \item A block of code to execute if the test is \inlinecode{True}.
+  \item A block of code to execute if the test is \inlinecode{False}.
+\end{itemize}
+
+In Python, it is not necessary to have the \inlinecode{False} block. It is
+mandatory to have the \inlinecode{True} block.
+
+\begin{lstlisting}
+x = int(input('Enter an integer: '))
+
+if x % 2 == 0:
+    print('Even')
+else:
+    print('Odd')
+print('Done with conditional')
+\end{lstlisting}
+
+In Python, indentation is very important not only because it tells which pieces
+of code are associated together, but also because not providing indentation
+will generate an error. This is different in other programming languages such
+as C/C++ or Java in which indentation is only used for readability purposes.
+
+\subsubsection{Nested Conditionals}
+
+It is possible to have nested conditionals, i.e., a conditional inside another
+one.
+
+\begin{lstlisting}
+if x % 2 == 0:
+    if x % 3 == 0:
+        print('Divisible by 2 and 3')
+    else:
+        print('Divisible by 2 and not by 3')
+elif x % 3 == 0:
+    print('Divisible by 3 and not by 2')
+\end{lstlisting}
+
+\subsection{Compound Booleans}
+
+As it has been previously mentioned, it is possible to combine booleans,
+
+\begin{lstlisting}
+if x < y and x < z:
+    print('x is least')
+elif y < z:
+    print('y is least')
+else:
+   print('z is least')
+\end{lstlisting}
+
+\subsection{Control Flow - Branching}
+
+Basically in branching, a condition is evaluated and this value is either
+\inlinecode{True} or \inlinecode{False}, then a suite of code is evaluated
+depending of this value. Figure \ref{img:branching_flow} shows the possible
+ways to use branching in Python.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{branching_flow.png}
+  \caption{Control flow of branching}
+  \label{img:branching_flow}
+\end{figure}
+
+To sum up, branching programs allow making choices and do different things, but
+each statement is executed at most once. This means that the maximum time to
+run the program depends only on the length of the program. As a consequence,
+these are the so-called linear programs because they run in constant time,
+i.e., each instruction is executed at most once. However, they do not provide
+the power to really build interesting algorithms.
 
 \end{document}
